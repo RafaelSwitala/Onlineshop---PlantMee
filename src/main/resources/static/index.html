@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Plant Mee</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <div>
+        <script type="text/x-handlebars-template">
+            {{> header index='active' }}
+        </script>
+    </div>
+
+    <div>
+        <script type="text/x-handlebars-template">
+            {{> hero title='Plant Mee' }}
+        </script>
+    </div>
+
+    <div class="main-page">
+        <div class="main-page__categories"></div>
+        <div class="main-page__selection" id="card-container">
+            <div th:each="plant : ${plants}" class="card-item">
+                <div class="card-item__name" th:text="${plant.name}"></div>
+                <div class="card-item__image">
+                    <img th:src="${plant.url}" th:alt="${plant.name}">
+                </div>
+                <div class="card-item__price" th:text="${plant.price} + '€'"></div>
+                <button class="card-item__warenkorb-button">Zum Warenkorb hinzufügen</button>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <script type="text/x-handlebars-template">
+            {{> footer }}
+        </script>
+    </div>
+</body>
+</html>
